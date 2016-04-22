@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.xebialabs.com/deployit/synthetic" xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+
+    <type type="remoteScript.LocalHost" extends="remoteScript.OverthereHost" label="Local XL Release server">
+        <!-- Internal properties -->
+        <property name="protocol" default="local" hidden="true"/>
+    </type>
+
+    <type type="remoteScript.Monitoring" extends="remoteScript.Overthere" label="RSDeploy task">
+        <!-- Input properties -->
+        <property name="host" kind="ci" referenced-type="thomsonreuters.LocalRsDeployHost" category="input" description="Overthere host to execute the script."/>
+        
+        <property name="action" category="input" description="Either stop, start or restart"/>
+        <property name="commandLineFlags" category="input" description="Any flags that need to be added to the command"/>
+
+        <!-- hide these properties - we won't use them -->
+        <property name="script" required="false" category="input" hidden="true" default="ignored" description="ignored"/>
+    </type>
+
+</synthetic>
