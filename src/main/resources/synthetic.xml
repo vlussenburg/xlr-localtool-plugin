@@ -8,17 +8,23 @@
 -->
 <synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.xebialabs.com/deployit/synthetic" xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-    <type type="remoteScript.LocalHost" extends="remoteScript.OverthereHost" label="Local XL Release server">
+    <type type="xymon.XyMonExecutable" extends="remoteScript.OverthereHost" label="Local XyMon client">
         <!-- Internal properties -->
         <property name="protocol" default="local" hidden="true"/>
+
+        <property name="server" default="dubitsys.global.pioneer.com"/>
+        <property name="executablePath" default="/usr/local/xymon/client/bin/ymon"/>
     </type>
 
-    <type type="remoteScript.Monitoring" extends="remoteScript.Overthere" label="RSDeploy task">
+    <type type="xymon.Service" extends="remoteScript.Overthere" label="Enable or disable monitoring of a service">
         <!-- Input properties -->
-        <property name="host" kind="ci" referenced-type="thomsonreuters.LocalRsDeployHost" category="input" description="Overthere host to execute the script."/>
+        <property name="host" kind="ci" referenced-type="xymon.XyMonExecutable" category="input" description="Overthere host to execute the script."/>
         
-        <property name="action" category="input" description="Either stop, start or restart"/>
-        <property name="commandLineFlags" category="input" description="Any flags that need to be added to the command"/>
+        <property name="action" category="input" description="Either enable or disable" />
+        <property name="duration" category="input" type="integer" description="N seconds" />
+        <property name="message" category="input" description="Informative message" default="Disabled by XL Release" />
+        <property name="client" category="input" description="Xymon client (server) to enable/disable  monitoring on" />
+        <property name="service" category="input" description="Service on the client to enable/disable monitoring on" />
 
         <!-- hide these properties - we won't use them -->
         <property name="script" required="false" category="input" hidden="true" default="ignored" description="ignored"/>

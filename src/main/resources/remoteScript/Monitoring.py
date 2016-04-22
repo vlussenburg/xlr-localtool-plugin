@@ -20,11 +20,13 @@ def apply_task_options():
         for key, value in connectionOptions.iteritems():
             host_options.put(key, value)
 
+
 host = task.pythonScript.getProperty("host")
-script = "Tool.exe %s %s" % (action, commandLineFlags)
+script = "%s %s \"%s %s.%s %s '%s'\"" % (host.executablePath, host.server, action, client, service, duration, message)
 apply_task_options()
 session = OverthereSession(host)
-response = session.execute(script, "C:\Tooldir")
+response = session.execute(script, None)
+
 
 # set variables
 output = response.stdout
