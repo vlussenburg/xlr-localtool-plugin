@@ -22,7 +22,7 @@ def apply_task_options():
 
 
 host = task.pythonScript.getProperty("host")
-script = "%s %s \"%s %s.%s %s '%s'\"" % (host.executablePath, host.server, action, client, service, duration, message)
+script = "%s %s \"%s %s.%s %s '%s'\"" % (host.getProperty("executablePath"), host.getProperty("server"), action, client, service, duration, message)
 apply_task_options()
 session = OverthereSession(host)
 response = session.execute(script, None)

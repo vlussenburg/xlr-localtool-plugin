@@ -21,7 +21,7 @@
         <property name="host" kind="ci" referenced-type="xymon.XyMonExecutable" category="input" description="Overthere host to execute the script."/>
         
         <property name="action" category="input" description="Either enable or disable" />
-        <property name="duration" category="input" type="integer" description="N seconds" />
+        <property name="duration" category="input" kind="integer" description="N seconds" />
         <property name="message" category="input" description="Informative message" default="Disabled by XL Release" />
         <property name="client" category="input" description="Xymon client (server) to enable/disable  monitoring on" />
         <property name="service" category="input" description="Service on the client to enable/disable monitoring on" />
